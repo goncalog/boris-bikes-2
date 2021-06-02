@@ -8,9 +8,13 @@ class DockingStation
   end
 
   def release_bike
-    new_bike = Bike.new
+    if @bike_dock.empty? 
+      raise "empty docking station"
+    else
+      return Bike.new
+    end
   end
-
+  
   def dock_bike
     @bike_dock << Bike.new
   end

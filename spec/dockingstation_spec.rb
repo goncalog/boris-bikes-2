@@ -6,7 +6,9 @@ describe DockingStation do
   end
 
   it 'expects new_bike to be working' do
-    expect(subject.release_bike.working?).to eq true
+    dockingstation = DockingStation.new
+    dockingstation.dock_bike
+    expect(dockingstation.release_bike.working?).to eq true
   end
 
   it 'responds to dock_bike' do
@@ -17,6 +19,10 @@ describe DockingStation do
     dockingstation = DockingStation.new
     dockingstation.dock_bike
     expect(dockingstation.bike_dock.empty?).to eq false
+  end
+
+  it 'raises an error when trying to get a bike with empty docking station' do
+    expect { subject.release_bike }.to raise_error "empty docking station"
   end
 
 end
