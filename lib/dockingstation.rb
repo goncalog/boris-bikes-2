@@ -16,6 +16,7 @@ class DockingStation
   end
   
   def dock_bike
+    fail "full docking station" unless @bike_dock.empty?
     @bike_dock << Bike.new
   end
 
